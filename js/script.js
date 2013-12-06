@@ -85,11 +85,27 @@ function hexColourToDecimalSplit(colourGuessValue){
   }
 
 
-  //convert String to hexadecimal  -- to interger
-  colourGuessValue = colourGuessValue.toString(16);
+  //convert String to hexadecimal
+  colourGuessValue = colourGuessValue.toString();
   console.log("colourGuessValue toString(16): "+colourGuessValue);
 
-
+//split
+  colourGuessValue = colourGuessValue.split("");
   //multiply integers together to get seperate R G B   decimal values
+  var RValueRgb;
+  var GValueRgb;
+  var BValueRgb;
+
+  RValueRgb = parseInt(colourGuessValue[0]+colourGuessValue[1], 16)
+  console.log(  "rgbRvalue ="+ RValueRgb);
+
+  GValueRgb = parseInt(colourGuessValue[2]+colourGuessValue[3], 16);
+  console.log(  "rgbGvalue ="+ GValueRgb);
+
+  BValueRgb = parseInt(colourGuessValue[4]+colourGuessValue[5], 16);
+  console.log(  "rgbBvalue ="+ BValueRgb);
+
+  console.log("rgb("+RValueRgb+", "+GValueRgb+", "+BValueRgb+") of colourGuessValue");
+
 
 }
