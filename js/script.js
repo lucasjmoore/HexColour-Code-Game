@@ -1,3 +1,21 @@
+var trueColourValue = new Array();
+var playerGuessValue = new Array();
+var score = 0;
+
+
+//function loads init when page has loaded
+window.onload=function(){
+  init();
+};
+
+
+function init(){
+//page loaded give the user a random colour
+  setRandomColour(); 
+}
+
+
+
   function setRandomColour(){
 
     var colourDecimalR,colourDecimalG,colourDecimalB;
@@ -5,13 +23,25 @@
     colourDecimalR = Math.floor(Math.random()*256);
     colourDecimalG = Math.floor(Math.random()*256);
     colourDecimalB = Math.floor(Math.random()*256);
+ 
+
+    /*testing only purpose defaults to red*/
+    // colourDecimalR = 255;
+    // colourDecimalG = 0;
+    // colourDecimalB = 0;
+
+
+    //setting global trueColourValue variable
+    trueColourValue[0] = colourDecimalR;
+    trueColourValue[1] = colourDecimalG;
+    trueColourValue[2] = colourDecimalB;
 
     setBackgroundColour(colourDecimalR,colourDecimalG,colourDecimalB);
 
   }
 
   function setBackgroundColour(colourDecimalR, colourDecimalG, colourDecimalB){
-    console.log( 'random colour value: rgb(' + [colourDecimalR,colourDecimalG,colourDecimalB].join(',') + ')');
+    console.log( 'random colour value they have to guess: rgb(' + [colourDecimalR,colourDecimalG,colourDecimalB].join(',') + ')');
     document.body.style.backgroundColor = 'rgb(' + [colourDecimalR,colourDecimalG,colourDecimalB].join(',') + ')';
   }
 
@@ -29,18 +59,14 @@
 function checkValidInput(colourGuessValue){
   if(colourGuessValue.length == 3){
     //  If colourGuessValue only has 3 characters.  Example: #FFF
-
+    
     hexColourToDecimalSplit(colourGuessValue);
-
-    //set next random colour
-    setRandomColour();
+    
+    setRandomColour(); //set next random colour they'll need to guess.
   }
   else if (colourGuessValue.length == 6){
     //  Else colourGuessValue 6 characters.  Example: #FFFFFF
-    
     hexColourToDecimalSplit(colourGuessValue);
-
-    //set next random colour
     setRandomColour();
   }
   else{
@@ -105,7 +131,45 @@ function hexColourToDecimalSplit(colourGuessValue){
   BValueRgb = parseInt(colourGuessValue[4]+colourGuessValue[5], 16);
   console.log(  "rgbBvalue ="+ BValueRgb);
 
-  console.log("rgb("+RValueRgb+", "+GValueRgb+", "+BValueRgb+") of colourGuessValue");
+  console.log("colourGuessValue rgb("+RValueRgb+", "+GValueRgb+", "+BValueRgb+")");
+
+  //setting global trueColourValue variable
+  playerGuessValue[0] = RValueRgb;
+  playerGuessValue[1] = GValueRgb;
+  playerGuessValue[2] = BValueRgb;
+
+  //get the player's score
+  scoreRound();
+}
+
+function scoreRound(){
+  var RDifference;
+  var GDifference;
+  var BDifference;
+  var rgbAverage;
 
 
+  RDifference = parseInt(playerGuessValue[0]) - parseInt(trueColourValue[0]);
+  console.log("RDifference: "+RDifference);
+
+  GDifference = playerGuessValue[1] - trueColourValue[1];
+  console.log("GDifference: "+GDifference);
+
+  BDifference = playerGuessValue[2] - trueColourValue[2];
+  console.log("BDifference: "+BDifference);
+
+
+//makes sure values are positive
+  RDifference = Math.abs(RDifference);
+  GDifference = Math.abs(GDifference);
+  BDifference = Math.abs(BDifference);
+
+  rgbAverage = (RDifference + GDifference + BDifference)/3;
+  console.log("rgbAverage: "+rgbAverage +" (closer to 0 the better)");
+
+  score += Math.floor(  Math.abs( (rgbAverage-255))  );
+  console.log("score: "+score);
+
+  document.querySelector("#scoreText").innerHTML="Score: "+score;
+ 
 }
