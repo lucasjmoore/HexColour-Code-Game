@@ -31,8 +31,8 @@ You can get a medium score even in your colour doesn't look close.
 Random colour is given on button click (player's guess entry). Hexadecimal code is switched to rgb colour. Add in scoring system (Finding difference of the two colours and averaging the R G & B values. Closer to 0 higher score.)
 ###MVP:
   * player guess's colour value of background
-  * each round adds to score total
+  * each round adds to score total  
 ###Next Up:
 Adding a score details page:  
   * allows player to see what colour they guessed compaired to the real answer,
-  * breaks down round score
+  * breaks down round score  
