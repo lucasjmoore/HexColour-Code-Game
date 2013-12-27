@@ -41,7 +41,7 @@ function init(){
   }
 
   function setBackgroundColour(colourDecimalR, colourDecimalG, colourDecimalB){
-    console.log( 'random colour value they have to guess: rgb(' + [colourDecimalR,colourDecimalG,colourDecimalB].join(',') + ')');
+    console.log( '---------------------------\n random colour value they have to guess: rgb(' + [colourDecimalR,colourDecimalG,colourDecimalB].join(',') + ')');
     document.body.style.backgroundColor = 'rgb(' + [colourDecimalR,colourDecimalG,colourDecimalB].join(',') + ')';
   }
 

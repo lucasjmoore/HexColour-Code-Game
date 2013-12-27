@@ -20,10 +20,17 @@ Scoring compares each colour seperatly.
 You can get a medium score even in your colour doesn't look close.
   Example1:    random colour FF0000
                user guess    000000
-              
               The user got 4 out of 6 digits correct and would score 170 points.
 
   Example2:    random colour FF0000
                user guess    FFFFFF
-              
               The user got 2 out of 6 digits correct and would score 85 points.
+        
+Random colour is given on button click (player's guess entry). Hexadecimal code is switched to rgb colour. Add in scoring system (Finding difference of the two colours and averaging the R G & B values. Closer to 0 higher score.)
+###MVP
+*player guess's colour value of background
+*each round adds to score total
+###Next Up
+Adding a score details page:
+*allows player to see what colour they guessed compaired to the real answer,
+*breaks down round score
