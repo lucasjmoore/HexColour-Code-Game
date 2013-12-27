@@ -33,6 +33,6 @@ Random colour is given on button click (player's guess entry). Hexadecimal code 
   * player guess's colour value of background
   * each round adds to score total
 ###Next Up:
-1. Adding a score details page:  
-..* allows player to see what colour they guessed compaired to the real answer,
-..* breaks down round score
+Adding a score details page:  
+  * allows player to see what colour they guessed compaired to the real answer,
+  * breaks down round score
